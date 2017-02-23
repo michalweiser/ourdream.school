@@ -87,6 +87,7 @@ $(document).ready(function(){
   });
 
   colorPoints();
+
   $('.icon-next').click(function(){
     var itemDone = points[0];
     var itemAct = points[i];
@@ -120,7 +121,6 @@ $(document).ready(function(){
       $('.panels').css('marginLeft', moveLeft);
     }
   });
-
 
   positionEl();
 
