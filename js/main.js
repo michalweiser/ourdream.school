@@ -138,10 +138,8 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $("#survey-launcher").offset().top-98
     }, 1000, "easeOutCubic");
-
   });
 
-  skrollr.init();
   var stickyNavTop = $(' #navBar').offset().top;
   var stickyNav = function(){
     var scrollTop = $(window).scrollTop();
