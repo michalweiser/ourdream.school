@@ -4,7 +4,6 @@ function positionEl() {
 
   $("#hero .content").css('top', heroContentPos);
   $(".panel").css('width', $(window).width());
-  $("#email").css('width', parseInt($("#name").width()+$("#lastName").width()+108));
   $("#story p").css('margin-top', moveP);
   $("#story h2").css('margin-top', moveP-140+21);
   $("#story .unders").css('margin-top', moveP-80+21);
@@ -24,43 +23,12 @@ $(document).ready(function(){
   var i=0;
   var points=$('.under');
   var emailPH=$('#email').val();
-  var namePH=$('#name').val();
-  var lastPH=$('#lastName').val();
 
   $('#email').focusout(function(){
     if($(this).val() == ""){
       $(this).val(emailPH);
     }
   });
-
-  $('#name').focusout(function(){
-    if($(this).val() == ""){
-      $(this).val(namePH);
-    }
-  });
-
-  $('#lastName').focusout(function(){
-    if($(this).val() == ""){
-      $(this).val(lastPH);
-    }
-  });
-
-  $('#name').focusin(function(){
-    if($(this).val() != namePH){
-      $(this).val($(this).val());
-    }else{
-      $(this).val('');
-    }
-  });
-
-  $('#lastName').focusin(function(){
-    if($(this).val() != lastPH){
-      $(this).val($(this).val());
-    }else{
-      $(this).val('');
-    }
-  });
-
 
   $('#email').focusin(function(){
     if($(this).val() != emailPH){
