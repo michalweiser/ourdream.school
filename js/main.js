@@ -24,12 +24,7 @@ $(document).ready(function(){
       selector: '[data-scroll]',
       selectorHeader: '.page-header',
       speed: 1000,
-      easing: 'easeOutCubic',
-      callback: function ( anchor, toggle ) {
-        if (toggle.classList.contains('page-menu__item-link')) {
-          document.querySelector('#hamburger').click();
-        }
-      }
+      easing: 'easeOutCubic'
   });
 
   window.addEventListener('scroll', function onWindowScroll() {
@@ -40,19 +35,19 @@ $(document).ready(function(){
       );
   });
 
+  document.querySelector('.page-header__menu').addEventListener('click', function onMenuClick() {
+    this.classList.toggle('page-header__menu--open');
+  });
+
   document.querySelector('.hero-img').classList.add('hero-img--animate');
-  
+
   /////////////////
 
   var i=0;
   var points=$('.under');
   colorPoints();
 
-  $('#hamburger').click(function(){
-    $(this).toggleClass('open');
-    $(this).parent().toggleClass('open');
-    $('.page-menu').toggleClass('open');
-  });
+ 
 
   $('.icon-next').click(function(){
     var itemDone = points[0];

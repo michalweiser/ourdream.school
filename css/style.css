@@ -285,26 +285,25 @@ form {
   width: 100%;
   transition: all;
   transition-duration: 0.3s;
+  display: flex;
+  justify-content: space-between;
 }
 
-.page-header--sticky,
-.page-header.sticky {
+.page-header--sticky {
   background: rgba(255, 255, 255, 0.9);
 }
 
-.page-header--sticky .logo,
-.page-header.sticky .logo {
-  background-position: left -57px;
-}
-
-.logo {
+.page-header__logo {
   width: 260px;
   height: 55px;
   background: url(../images/ODS_logo.png) left top no-repeat;
   background-size: 100%;
   display: block;
-  float: left;
   margin: 20px 40px;
+}
+
+.page-header--sticky .page-header__logo {
+  background-position: left -57px;
 }
 
 
@@ -411,25 +410,22 @@ form {
 /*MENU*/
 
 #menuBtn {
-  position: fixed;
-  padding: 30px 30px;
-  right: 0;
-  top: 0;
+  
 }
 
-#menuBtn.open {
+.page-header__menu.page-header__menu--open {
   background: #092531;
 }
 
-.page-header--sticky #hamburger span {
+.page-header--sticky .page-header__menu__hamburger span {
   background: #092531;
 }
 
-#hamburger.open span {
+.page-header__menu--open .page-header__menu__hamburger span {
   background: #fff !important;
 }
 
-#hamburger {
+.page-header__menu__hamburger {
   width: 60px;
   height: 45px;
   -webkit-transform: rotate(0deg);
@@ -441,11 +437,10 @@ form {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-  margin: 0;
-  padding: 0;
+  margin: 30px;
 }
 
-#hamburger span {
+.page-header__menu__hamburger span {
   display: block;
   position: absolute;
   height: 4px;
@@ -462,73 +457,73 @@ form {
   transition: .25s ease-in-out;
 }
 
-#hamburger span:nth-child(even) {
+.page-header__menu__hamburger span:nth-child(even) {
   left: 50%;
   border-radius: 0 9px 9px 0;
 }
 
-#hamburger span:nth-child(odd) {
+.page-header__menu__hamburger span:nth-child(odd) {
   left: 0px;
   border-radius: 9px 0 0 9px;
 }
 
-#hamburger span:nth-child(1),
-#hamburger span:nth-child(2) {
+.page-header__menu__hamburger span:nth-child(1),
+.page-header__menu__hamburger span:nth-child(2) {
   top: 0px;
 }
 
-#hamburger span:nth-child(3),
-#hamburger span:nth-child(4) {
+.page-header__menu__hamburger span:nth-child(3),
+.page-header__menu__hamburger span:nth-child(4) {
   top: 18px;
 }
 
-#hamburger span:nth-child(5),
-#hamburger span:nth-child(6) {
+.page-header__menu__hamburger span:nth-child(5),
+.page-header__menu__hamburger span:nth-child(6) {
   top: 36px;
 }
 
-#hamburger.open span:nth-child(1),
-#hamburger.open span:nth-child(6) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(1),
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(6) {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-#hamburger.open span:nth-child(2),
-#hamburger.open span:nth-child(5) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(2),
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(5) {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 
-#hamburger.open span:nth-child(1) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(1) {
   left: 5px;
   top: 7px;
 }
 
-#hamburger.open span:nth-child(2) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(2) {
   left: calc(50% - 5px);
   top: 7px;
 }
 
-#hamburger.open span:nth-child(3) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(3) {
   left: -50%;
   opacity: 0;
 }
 
-#hamburger.open span:nth-child(4) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(4) {
   left: 100%;
   opacity: 0;
 }
 
-#hamburger.open span:nth-child(5) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(5) {
   left: 5px;
   top: 29px;
 }
 
-#hamburger.open span:nth-child(6) {
+.page-header__menu--open .page-header__menu__hamburger span:nth-child(6) {
   left: calc(50% - 5px);
   top: 29px;
 }
@@ -540,15 +535,15 @@ form {
   float: right;
   position: fixed;
   width: 200px;
-  right: -202px;
-  top: 80px;
+  right: -230px;
+  top: 61px;
   padding: 0;
   transition: all;
   transition-duration: 0.3s;
 }
 
-.page-menu.open {
-  right: 0;
+.page-header__menu--open .page-menu {
+  right: -30px;
 }
 
 .page-menu__item {
