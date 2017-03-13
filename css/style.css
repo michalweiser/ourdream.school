@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+body {
+  min-width: 480px;
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
@@ -158,9 +162,10 @@ h1 strong {
   font-weight: 300;
 }
 
-p {
+p,
+.follow-journey__subtitle {
   width: 75%;
-  margin: auto;
+  /*margin: auto;*/
   font-size: 30px;
   color: #666;
   font-weight: 100;
@@ -168,7 +173,13 @@ p {
   line-height: 1.7;
 }
 
-input[type='text'],
+.team,
+.follow-journey {
+  text-align: center;
+}
+
+.follow-journey__subscribe__name--first,
+.follow-journey__subscribe__name--last,
 .follow-journey__subscribe--email {
   margin-top: 40px;
   border: none;
@@ -181,8 +192,9 @@ input[type='text'],
   min-width: 340px;
 }
 
-input[type='text']:focus,
-input[type='email']:focus {
+.follow-journey__subscribe__name--first:focus,
+.follow-journey__subscribe__name--last:focus,
+.follow-journey__subscribe--email:focus {
   color: #fff;
   background: #b633ee;
 }
@@ -266,7 +278,7 @@ form {
   justify-content: center;
 }
 
-#navBar {
+.page-header {
   position: fixed;
   top: 0;
   z-index: 500;
@@ -275,11 +287,13 @@ form {
   transition-duration: 0.3s;
 }
 
-#navBar.sticky {
+.page-header--sticky,
+.page-header.sticky {
   background: rgba(255, 255, 255, 0.9);
 }
 
-#navBar.sticky .logo {
+.page-header--sticky .logo,
+.page-header.sticky .logo {
   background-position: left -57px;
 }
 
@@ -310,7 +324,7 @@ form {
   display: block;
 }
 
-.hero-img.anim {
+.hero-img--animate {
   transition: all ease-in-out 5s;
   transform: scale(1.08) translateZ(0);
   opacity: 1;
@@ -328,6 +342,24 @@ form {
   height: 120px;
   width: 75%;
   background-size: contain;
+}
+
+@media screen and (max-width: 1300px) {
+  #hero .content h1 {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #hero .content h1 {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #hero .content h1 {
+    background-image: url(../images/h101m.png);
+  }
 }
 
 #hero h1 img {
@@ -382,20 +414,19 @@ form {
   position: fixed;
   padding: 30px 30px;
   right: 0;
-  top;
-  0;
+  top: 0;
 }
 
 #menuBtn.open {
   background: #092531;
 }
 
-#navBar.sticky #hamburger span {
+.page-header--sticky #hamburger span {
   background: #092531;
 }
 
 #hamburger.open span {
-  background: #fff!important;
+  background: #fff !important;
 }
 
 #hamburger {
@@ -502,7 +533,7 @@ form {
   top: 29px;
 }
 
-ul.menu {
+.page-menu {
   background: #092531;
   font-weight: 300;
   font-size: 14px;
@@ -516,16 +547,16 @@ ul.menu {
   transition-duration: 0.3s;
 }
 
-ul.menu.open {
+.page-menu.open {
   right: 0;
 }
 
-ul.menu li {
+.page-menu__item {
   margin: 0;
   text-align: left;
 }
 
-ul.menu li a {
+.page-menu__item-link {
   color: #fff;
   text-transform: uppercase;
   transition: all;
@@ -534,33 +565,18 @@ ul.menu li a {
   display: block;
 }
 
-ul.menu li a:hover,
-ul.menu li a.active {
+.page-menu__item-link:hover,
+.page-menu__item-link.active {
   background: rgba(255, 255, 255, 0.1);
   color: #28ffa6;
   box-shadow: 0 2px 0 0 #28ffa6;
 }
 
-
-/* Chrome, Safari, Opera
-@-webkit-keyframes slide{
-0% {margin-top: 0;}
-50% {margin-top: -64px;}
-100% {margin-top: -128px;}
-}
-
-/* Standard syntax
-@keyframes slide {
-0% {margin-top: 0;}
-50% {margin-top: -64px;}
-100% {margin-top: -128px;}
-}*/
-
-#story p {
+.story p {
   margin: auto;
 }
 
-#story {
+.story {
   overflow: hidden;
 }
 
@@ -651,11 +667,11 @@ ul.menu li a.active {
 
 /* OUR PEOPLE */
 
-#team {
+.team {
   margin: 0;
 }
 
-#team h2 {
+.team h2 {
   margin: 40px;
 }
 
@@ -802,23 +818,45 @@ ul.menu li a.active {
 
 /*OUR SURVEY*/
 
-#survey-launcher {
-  width: 640px;
-  height: 640px;
+.survey-launcher {
+  padding: 40px 0;
+}
+
+.survey-launcher__circle {
+  width: 720px;
+  height: 720px;
   border-radius: 50%;
   background: #a4d165;
   margin: 7% auto;
   color: #fff;
   border: 40px #bbda58 solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-#survey-launcher h2,
-#survey-launcher a,
-#survey-launcher p {
+@media screen and (max-width: 720px) {
+  .survey-launcher__circle {
+    border-radius: 0;
+    width: 100%;
+    border: 0;
+    padding: 40px 0;
+  }
+}
+
+.survey-launcher__title,
+.survey-launcher__button,
+.survey-launcher p {
   color: #fff;
 }
 
-#survey-launcher a {
+.survey-launcher__title {
+  margin: 0 0 30px 0;
+}
+
+.survey-launcher__button {
+  display: block;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 24px;
@@ -826,17 +864,15 @@ ul.menu li a.active {
   border: 1px solid #fff;
   border-radius: 40px;
   padding: 10px 40px;
-  margin: 10px 0;
-  display: inline-block;
-  min-width: 180px;
+  margin: 10px auto;
+  width: 260px;
   transition: all;
   transition-duration: 0.3s;
 }
 
-#survey-launcher a:hover {
+.survey-launcher__button:hover {
   border: 1px solid #fff;
-  border-radius: 40px;
-  padding: 10px 50px;
+  width: 280px;
   background: #fff;
   color: #a4d165;
 }
@@ -854,19 +890,19 @@ ul.menu li a.active {
 
 @media screen and (min-width: 1380px) {
   .page-footer { 
-    height: 800px;
+    height: 1000px;
   }
 }
 
 @media screen and (max-width: 1380px) {
   .page-footer { 
-    height: 1100px;
+    height: 1300px;
   }
 }
 
 @media screen and (max-width: 920px) {
   .page-footer { 
-    height: 1500px;
+    height: 1700px;
   }
 }
 
@@ -1012,26 +1048,3 @@ ul.menu li a.active {
 
 /* Media Queries */
 
-@media screen and (max-width: 1300px) {
-  #hero .content h1 {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  #hero .content h1 {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  #hero .content h1 {
-    background-image: url(../images/h101m.png);
-  }
-  #survey-launcher {
-    border-radius: 0;
-    width: 100%;
-    border: 0;
-    padding: 40px 0;
-  }
-}
