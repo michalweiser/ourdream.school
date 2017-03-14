@@ -1,25 +1,48 @@
-function positionEl() {
-  heroContentPos = ($('.hero-img').height()-$('#hero .CTA').height()-240)/2;
-  var moveP = (parseInt($(".story").css('height'))-300)/2;
+(function(){
+  var i = 0;
+  var points = document.querySelectorAll('.story__dot');
+  var next_button = document.querySelector('.icon-next');
+  var prev_button = document.querySelector('.icon-prev');
+  var story_title = document.querySelector('.story__title');
+  
+  function getStyle(element, style) {
+    return window.getComputedStyle(element)[style];
+  }
 
-  $("#hero .content").css('top', heroContentPos);
-  $(".panel").css('width', $(window).width());
-  $(".story p").css('margin-top', moveP);
-  $(".story h2").css('margin-top', moveP-140+21);
-  $(".story .unders").css('margin-top', moveP-80+21);
-  $(".story .icon-prev, .story .icon-next").css('top', moveP+350);
-}
+  function colorPoints(previous, current, next){
+    next_button.style.color = getStyle(next ? next : current, 'background-color');
+    prev_button.style.color = getStyle(previous ? previous : current, 'background-color');
+    story_title.style.color = getStyle(current, 'background-color');
+  }
 
-function colorPoints(){
-  var currColor= $('.active').css('background-color');
-  var nextColor= $('.active').next().css('background-color');
-  var doneColor= $('.active').prev().css('background-color');
-  $('.icon-next').css('color', nextColor);
-  $('.icon-prev').css('color', doneColor);
-  $('.story h2').css('color', currColor);
-}
+  function shiftPanels(index) {
+    document.querySelector('.story__panels').style.marginLeft = "-" + (window.innerWidth * index) + "px";
+  }
 
-$(document).ready(function(){
+  function activePoint(previous, current, index) {
+    previous.classList.remove('story__dot--active');
+    current.classList.add('story__dot--active');
+
+    colorPoints(points[index-1], points[index], points[index+1]);
+    shiftPanels(index);
+  }
+
+  colorPoints(points[i-1], points[i], points[i+1]);
+
+  document.querySelector('.story__arrow--next').addEventListener('click', function onNextPanelClick() {
+    if (i < points.length-1) {
+      i++;
+      activePoint(points[i-1], points[i], i);
+    }
+  });
+
+  document.querySelector('.story__arrow--prev').addEventListener('click', function onPreviousPanelClick() {
+    if (i > 0) {
+      i--;
+      activePoint(points[i+1], points[i], i);
+    }
+  });
+
   smoothScroll.init({
       selector: '[data-scroll]',
       selectorHeader: '.page-header',
@@ -39,57 +62,10 @@ $(document).ready(function(){
     this.classList.toggle('page-header__menu--open');
   });
 
-  document.querySelector('.hero-img').classList.add('hero-img--animate');
+  document.querySelector('.hero__background').classList.add('hero__background--animate');
 
-  /////////////////
-
-  var i=0;
-  var points=$('.under');
-  colorPoints();
-
- 
-
-  $('.icon-next').click(function(){
-    var itemDone = points[0];
-    var itemAct = points[i];
-
-    if (i < points.length-1) {
-      i++;
-      $('.active').addClass('done');
-      $('.done').removeClass('active');
-      $(itemAct).next().removeClass('done').addClass('active');
-
-      colorPoints();
-
-      var moveLeft=parseInt(0-$(window).width()*i-1);
-      $('.panels').css('marginLeft', moveLeft);
-    }
+  window.addEventListener('resize', function onWindowResize () {
+    shiftPanels(i);
   });
-
-  $('.icon-prev').click(function(){
-    var itemDone = points[0];
-    var itemAct = points[i];
-
-    if (i > 0) {
-      i--;
-      $('.active').addClass('done');
-      $('.done').removeClass('active');
-      $(itemAct).prev().removeClass('done').addClass('active');
-
-      colorPoints();
-
-      var moveLeft=parseInt(0-$(window).width()*i-1);
-      $('.panels').css('marginLeft', moveLeft);
-    }
-  });
-
-  positionEl();
-
-  var heroContentPos = ($('.hero-img').height()-$('#hero .CTA').height()-240)/2;
   
-
-  $( window ).resize(function() {
-    positionEl();
-  });
-
-});
+})();
