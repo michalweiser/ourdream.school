@@ -683,10 +683,10 @@ form {
 
 .team__member {
   width: 25vw;
-  min-width: 200px;
+  min-width: 180px;
   height: 50vw;
   position: relative;
-  max-height: 240px;
+  max-height: 220px;
 }
 
 .team__member:hover .team__member__front {
