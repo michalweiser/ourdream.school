@@ -528,6 +528,10 @@ form {
   position: absolute;
   align-self: center;
   top: 90px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .story__arrows {
@@ -536,6 +540,8 @@ form {
   margin: auto;
   align-self: center;
   display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .story__arrow {
@@ -605,6 +611,7 @@ form {
 .story__dots {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .story__dot {
@@ -657,7 +664,6 @@ form {
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: 1;
-  height: 100%;
   justify-content: center;
 }
 
